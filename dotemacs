@@ -116,10 +116,14 @@
 (add-hook 'LaTeX-mode-hook 'flyspell-mode)
 
 
+;; Python development configurations.
+
 (let ((default-directory "~/.emacs.d/"))
       (normal-top-level-add-subdirs-to-load-path))
+
 ;; Auto complete and pymacs
 ;;http://stackoverflow.com/questions/2855378/ropemacs-usage-tutorial
+
 (autoload 'python-mode "python-mode" "Python Mode." t)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
@@ -130,6 +134,7 @@
 (autoload 'pymacs-exec "pymacs" nil t)
 (autoload 'pymacs-load "pymacs" nil t)
 (pymacs-load "ropemacs" "rope-")
+
 (setq ropemacs-enable-autoimport t)
 (require 'auto-complete)
 (global-auto-complete-mode t)
@@ -144,3 +149,5 @@
 
 (require 'ido)
 (ido-mode t)
+
+;; End Python development configurations.
