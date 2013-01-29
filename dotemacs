@@ -119,7 +119,7 @@
 ;; Python development configurations.
 
 (let ((default-directory "~/.emacs.d/"))
-      (normal-top-level-add-subdirs-to-load-path))
+  (normal-top-level-add-subdirs-to-load-path))
 
 ;; Auto complete and pymacs
 ;;http://stackoverflow.com/questions/2855378/ropemacs-usage-tutorial
@@ -151,3 +151,13 @@
 (ido-mode t)
 
 ;; End Python development configurations.
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+    (let (el-get-master-branch)
+      (goto-char (point-max))
+      (eval-print-last-sexp))))
+(el-get 'sync)
+
+(add-hook 'python-mode-hook 'jedi:setup)
