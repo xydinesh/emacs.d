@@ -123,7 +123,6 @@
 
 ;; Auto complete and pymacs
 ;;http://stackoverflow.com/questions/2855378/ropemacs-usage-tutorial
-
 (autoload 'python-mode "python-mode" "Python Mode." t)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
@@ -151,13 +150,8 @@
 (ido-mode t)
 
 ;; End Python development configurations.
-(unless (require 'el-get nil 'noerror)
-  (with-current-buffer
-      (url-retrieve-synchronously
-       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
-    (let (el-get-master-branch)
-      (goto-char (point-max))
-      (eval-print-last-sexp))))
-(el-get 'sync)
-
+;;~/.emacs.d/el-get
+(require 'el-get)
+(add-to-list 'el-get-recipe-path "~/emacs.d/el-get/recipes")
+(setq el-get-verbose t)
 (add-hook 'python-mode-hook 'jedi:setup)
